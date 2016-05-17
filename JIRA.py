@@ -2,6 +2,7 @@ import requests
 import yaml
 import json
 
+
 base = 'https://socrata.atlassian.net'
 with open('/Users/socrataintern/.soda.yml','r') as stream:
 	config = yaml.load(stream)
@@ -47,7 +48,8 @@ class JIRA(object):
 		return data
 	
 	def map_fields(self, tickets):
-		
+
+		return
 
 	def get_data(self):
 		all_tickets = []
@@ -55,12 +57,11 @@ class JIRA(object):
 		all_tickets.extend(self.get_closed_issues())
 
 		cleaned_tickets = self.map_fields(all_tickets)
-		
+
 		return cleaned_tickets
 
 
 
 
-jira = JIRA(username='peter.moore', password=config['jira_password'])
+jira = JIRA(username=config['jira_username'], password=config['jira_password'])
 data = jira.get_fields()
-print(data)
